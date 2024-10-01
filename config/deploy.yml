@@ -2,12 +2,12 @@
 service: kamaltest
 
 # Name of the container image.
-image: marthingo/kamal
+image: marthingo/kamaltest
 
 # Deploy to these servers.
 servers:
   web:
-    - mbberggren.cloud
+    - 206.189.111.196
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -17,12 +17,12 @@ servers:
 # Set ssl: false if using something like Cloudflare to terminate SSL (but keep host!).
 proxy:
   ssl: true
-  host: mbberggren.cloud
+  host: app.example.com
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
-  # server: registry.digitalocean.com / ghcr.io / ...
+  # server: registry.digitalocean.com
   username: marthingo
 
   # Always use an access token rather than real password when possible.
