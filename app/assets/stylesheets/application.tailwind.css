@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  .form-input {
+    @apply block border border-gray-400 rounded-md outline-none px-3 py-2 w-full
+  }
+
+  .form-label {
+    @apply font-bold mb-2 block
+  }
+
+  .button-solid {
+    @apply py-3 px-5 rounded-lg bg-gray-900 text-white inline-block font-medium cursor-pointer
+  }
+
+  .checkbox {
+    @apply w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600
+  }
+
+  .link {
+    @apply text-gray-900 hover:text-gray-900 hover:underline underline underline-offset-2
+  }
+}
+
+
