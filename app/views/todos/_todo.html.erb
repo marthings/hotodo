@@ -1,0 +1,16 @@
+<div id="<%= dom_id todo %>">
+  <p>
+    <strong>Title:</strong>
+    <%= todo.title %>
+  </p>
+
+  <p>
+    <strong>Completed:</strong>
+    <%= todo.completed %>
+  </p>
+
+  <%= form_with url: complete_todo_path(todo), method: :patch do %>
+    <%= check_box_tag :completed, { onchange: "this.form.submit();" } %>
+  <% end %>
+
+</div>

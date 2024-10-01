@@ -1,0 +1,16 @@
+<%= form_with(model: todo) do |form| %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :completed, style: "display: block" %>
+    <%= form.checkbox :completed %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
