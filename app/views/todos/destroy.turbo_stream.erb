@@ -1,0 +1,4 @@
+<%= turbo_stream.remove @todo %>
+<%= turbo_stream.update "progress" do %>
+  <%= render "todos/progress", todos: @todos %>
+<% end %>

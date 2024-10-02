@@ -1,19 +1,20 @@
-<div id="<%= dom_id todo %>" class="border rounded-lg p-4 px-6 mb-4 flex gap-4 items-center justify-between">
-  <%= turbo_frame_tag dom_id(todo, :edit), class: "contents" do %>
+<div id="<%= dom_id todo %>" class="todo group border-b transition-all py-4 mb-4 flex gap-4 items-center justify-between">
   
-    <h2 class="text-xl font-bold">
-      <%= todo.title %>
-    </h2>
+    <%= turbo_frame_tag dom_id(todo, :edit) do %>
+      <h2 class="text-xl font-bold <%= todo.completed? ? "line-through text-gray-500" : "" %>">
+        <%= todo.title %>
+      </h2>
+    <% end %>
 
     <div class="flex gap-4 items-center">
       
-      <%= link_to "Edit", edit_todo_path(todo), class: "link" %>
+      <%= link_to "Edit", edit_todo_path(todo), class: "link", data: { turbo_frame: dom_id(todo, :edit) } %>
       
-      <%= form_with model: todo, method: :patch do |form| %>
-        <%= form.check_box :completed, { checked: todo.completed, onchange: "this.form.requestSubmit();", class: "checkbox" } %>
+      <%= form_with model: todo do |form| %>
+        <%= form.check_box :completed, { checked: todo.completed, onchange: "this.form.requestSubmit();", class: "checkbox group-hover:border-blue-600 cursor-pointer" } %>
       <% end %>
 
     </div>
 
-  <% end %>
+  
 </div>

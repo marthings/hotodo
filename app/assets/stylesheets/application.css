@@ -8,3 +8,55 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+
+.todo {
+  animation: todo linear forwards;
+  animation-timeline: view();
+  transform-origin: left;
+  animation-range-end: 200px;
+}
+
+@keyframes todo {
+  0% {
+    opacity: 0;
+    padding-left: 2svw;
+    translate: 20px 0px;
+  }
+  50% {
+    opacity: 0;
+    padding-left: 1svw;
+    translate: 0px -20px;
+  }
+  100% {
+    opacity: 1;
+    padding-left: 0;
+    translate: 0 0;
+  }
+}
+
+
+progress[value] {
+  --color: blue; /* the progress color */
+  --background: lightgrey; /* the background color */
+
+  appearance: none;
+  border: none;
+  width: 100%;
+  margin: 24px 0;
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-bar {
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 10em;
+  background: var(--color);
+  transition: all 0.2s ease-in-out;
+}
+progress[value]::-moz-progress-bar {
+  border-radius: 10em;
+  background: var(--color);
+}

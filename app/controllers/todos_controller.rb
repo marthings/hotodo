@@ -57,11 +57,12 @@ class TodosController < ApplicationController
 
   # DELETE /todos/1 or /todos/1.json
   def destroy
+    @todos = Todo.all
     @todo.destroy!
 
     respond_to do |format|
       format.html { redirect_to todos_path, status: :see_other, notice: "Todo was successfully destroyed." }
-      format.json { head :no_content }
+      format.turbo_stream
     end
   end
 

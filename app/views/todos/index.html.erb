@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_stream_from "todos" %>
 
 <% content_for :title, "Todos" %>
 
@@ -8,7 +8,7 @@
 
 <%= search_form_for @q do |f| %>
 
-  <div class="flex gap-4 items-center py-4">
+  <div class="flex gap-4 items-center pt-4 pb-8">
 
     <div class="flex items-center gap-2 flex-row-reverse">
       <%= f.label :completed_eq, "All", class: "form-inline-label" %>
@@ -28,9 +28,13 @@
   </div>
 <% end %>
 
+<% if params.dig(:q, :completed_eq) != "true" && params.dig(:q, :completed_eq) != "false" %>
+  <div id="progress">
+    <%= render "todos/progress", todos: @todos %>
+  </div>
+<% end %>
+
 <div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-  <% end %>
+  <%= render @todos %>
 </div>
 
