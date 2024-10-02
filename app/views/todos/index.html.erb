@@ -6,7 +6,29 @@
 
 <%= render "form", todo: @todo %>
 
-<div id="todos" class="my-4">
+<%= search_form_for @q do |f| %>
+
+  <div class="flex gap-4 items-center py-4">
+
+    <div class="flex items-center gap-2 flex-row-reverse">
+      <%= f.label :completed_eq, "All", class: "form-inline-label" %>
+      <%= f.radio_button :completed_eq, nil, onchange: "this.form.requestSubmit();", class: "radio" %>
+    </div>
+    
+    <div class="flex items-center gap-2 flex-row-reverse">
+      <%= f.label :completed_eq_true, "Completed", class: "form-inline-label" %>
+      <%= f.radio_button :completed_eq, true, onchange: "this.form.requestSubmit();", class: "radio" %>
+    </div>
+
+    <div class="flex items-center gap-2 flex-row-reverse">
+      <%= f.label :completed_eq_false, "Not Completed", class: "form-inline-label" %>
+      <%= f.radio_button :completed_eq, false, onchange: "this.form.requestSubmit();", class: "radio" %>
+    </div>
+
+  </div>
+<% end %>
+
+<div id="todos">
   <% @todos.each do |todo| %>
     <%= render todo %>
   <% end %>
