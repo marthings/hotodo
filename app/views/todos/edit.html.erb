@@ -3,12 +3,12 @@
 <h1>Editing todo</h1>
 
 <%= turbo_frame_tag dom_id(@todo, :edit) do %>
-  <div class="flex gap-4 items-center">
-  <%= render "form", todo: @todo, class: "contents" %>
-  <div class="flex gap-4 items-center">
-    <%= button_to "Delete", @todo, method: :delete, class: "link", data: { turbo_confirm: "Are you sure?", turbo_frame: "_top" } %>
-    <%= link_to "Cancel", todos_path, class: "link" %>
-  </div>
+  <div class="flex flex-col md:flex-row gap-4 md:items-center">
+    <%= render "form", todo: @todo, class: "contents" %>
+    <div class="flex gap-4 items-center">
+      <%= button_to "Delete", @todo, method: :delete, class: "link", data: { turbo_confirm: "Are you sure?", turbo_frame: "_top" } %>
+      <%= link_to "Cancel", todos_path, class: "link" %>
+    </div>
   </div>
 <% end %>
 

@@ -1,7 +1,5 @@
 class Todo < ApplicationRecord
 
-  broadcasts_refreshes
-
   def self.ransackable_attributes(auth_object = nil)
     ["completed", "created_at", "id", "id_value", "title", "updated_at"]
   end

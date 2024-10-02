@@ -1,28 +1,25 @@
-<%= turbo_stream_from "todos" %>
-
 <% content_for :title, "Todos" %>
 
 <h1 class="font-black text-4xl mb-6">Todos</h1>
 
-<%= render "form", todo: @todo %>
+<div class="todo-form">
+  <%= render "form", todo: @todo %>
+</div>
 
 <%= search_form_for @q do |f| %>
 
-  <div class="flex gap-4 items-center pt-4 pb-8">
+  <div class="flex flex-col md:flex-row gap-4 md:items-center pt-4 pb-8">
 
-    <div class="flex items-center gap-2 flex-row-reverse">
-      <%= f.label :completed_eq, "All", class: "form-inline-label" %>
-      <%= f.radio_button :completed_eq, nil, onchange: "this.form.requestSubmit();", class: "radio" %>
-    </div>
+    <%= link_to "Show all", todos_path, class: "form-inline-label" %>
     
-    <div class="flex items-center gap-2 flex-row-reverse">
+    <div class="flex items-center gap-2">
+      <%= f.radio_button :completed_eq, true, oninput: 'this.form.requestSubmit()', class: "radio" %>
       <%= f.label :completed_eq_true, "Completed", class: "form-inline-label" %>
-      <%= f.radio_button :completed_eq, true, onchange: "this.form.requestSubmit();", class: "radio" %>
     </div>
 
-    <div class="flex items-center gap-2 flex-row-reverse">
+    <div class="flex items-center gap-2">
+      <%= f.radio_button :completed_eq, false, oninput: 'this.form.requestSubmit()', class: "radio" %>
       <%= f.label :completed_eq_false, "Not Completed", class: "form-inline-label" %>
-      <%= f.radio_button :completed_eq, false, onchange: "this.form.requestSubmit();", class: "radio" %>
     </div>
 
   </div>

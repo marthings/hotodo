@@ -1,13 +1,11 @@
-<%= form_with(model: todo, class: "contents") do |form| %>
-
-  <div class="flex gap-4 items-stretch">
+<%= form_with(model: todo) do |form| %>
+  
+  <div class="todo-actions">
 
     <%= form.label :title, style: "display: none" %>
     <%= form.text_field :title, class: "form-input", placeholder: "Add your todo!", autofocus: true %>  
-
-    <div>
-      <%= form.submit "Save", class: "button-solid" %>
-    </div>
+    <%= form.submit "Save", class: "button-solid hidden" %>
 
   </div>
+
 <% end %>

@@ -14,8 +14,12 @@ class TodosController < ApplicationController
   end
 
   def complete
-    @todo.update(completed: !@todo.completed)
-    redirect_to todos_path
+    @todo.update(completed: !@todo.completed) # This toggles the read status
+    
+    respond_to do |format|
+      format.html { redirect_to todos_url(q: params[:q]), notice: "Chapter read status updated!" } # Respond with HTTP 200 OK for Turbo
+      format.json { head :ok }
+    end
   end
 
   # GET /todos/new

@@ -17,6 +17,16 @@
   animation-range-end: 200px;
 }
 
+.todo-form {
+  container-type: inline-size;
+  container-name: todoform;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 8px;
+}
+
 @keyframes todo {
   0% {
     opacity: 0;
