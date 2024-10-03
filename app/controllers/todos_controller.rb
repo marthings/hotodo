@@ -7,6 +7,7 @@ class TodosController < ApplicationController
     @todos = @q.result(distinct: true).order(created_at: :desc)
     # @todos = Todo.all.order(created_at: :desc)
     @todo = Todo.new
+
   end
 
   # GET /todos/1 or /todos/1.json
@@ -14,10 +15,14 @@ class TodosController < ApplicationController
   end
 
   def complete
-    @todo.update(completed: !@todo.completed) # This toggles the read status
+    # Permit Ransack parameters
+    q_params = params[:q].present? ? params.require(:q).permit! : {}
+    # This needs to be rewritten to the new expect format but atm not working
+    # q_params = params[:q].present? ? params.expect!(:q [how to permit all]) : {}
+    @todo.update(completed: !@todo.completed)
     
     respond_to do |format|
-      format.html { redirect_to todos_url(q: params[:q]), notice: "Chapter read status updated!" } # Respond with HTTP 200 OK for Turbo
+      format.html { redirect_to todos_path(q: q_params), notice: "Chapter read status updated!" } # Respond with HTTP 200 OK for Turbo
       format.json { head :ok }
     end
   end
@@ -78,6 +83,6 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.expect(todo: [ :title, :completed ])
+      params.expect(todo: [ :title, :completed])
     end
 end

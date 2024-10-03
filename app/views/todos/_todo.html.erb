@@ -10,7 +10,8 @@
       
       <%= link_to "Edit", edit_todo_path(todo), class: "link", data: { turbo_frame: dom_id(todo, :edit) } %>
       
-      <%= form_with model: todo do |form| %>
+      <%# Send params to controller with request.query_parameters %>
+      <%= form_with url: complete_todo_path(todo, request.query_parameters), method: :patch do |form| %>
         <%= form.check_box :completed, { checked: todo.completed, onchange: "this.form.requestSubmit();", class: "checkbox group-hover:border-blue-600 cursor-pointer" } %>
       <% end %>
 
